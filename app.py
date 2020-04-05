@@ -1,6 +1,6 @@
+import logging
 from flask import Flask, request, jsonify
 from flask.logging import create_logger
-import logging
 
 import pandas as pd
 from sklearn.externals import joblib
@@ -63,6 +63,7 @@ def predict():
     # get an output prediction from the pretrained model, clf
     prediction = list(clf.predict(scaled_payload))
     # TO DO:  Log the output prediction value
+    LOG.info(f"output prediction: {prediction}")
     return jsonify({'prediction': prediction})
 
 if __name__ == "__main__":
