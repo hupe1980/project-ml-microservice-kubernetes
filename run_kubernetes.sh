@@ -9,10 +9,8 @@ dockerpath=hupe1980/udacity-mlapi
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl run ml-api \
+kubectl create deployment ml-api \
     --image=$dockerpath\
-    --port=80\
-    --labels app=ml-api
 
 # Step 3:
 # List kubernetes pods
@@ -20,4 +18,4 @@ kubectl get pods
 
 # Step 4:
 # Forward the container port to a host
-kubectl port-forward ml-api 8000:80
+kubectl port-forward deployment/ml-api 8000:80
